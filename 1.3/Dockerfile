@@ -6,8 +6,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
                                 && apt-get clean \
                                 && mkdir /var/www/html/
 
-ADD https://github.com/phpipam/phpipam/archive/1.2.tar.gz /tmp
-RUN tar -xzf /tmp/1.2.tar.gz -C /var/www/html --strip-components=1
+ADD https://github.com/phpipam/phpipam/archive/1.3.tar.gz /tmp
+RUN tar -xzf /tmp/1.3.tar.gz -C /var/www/html --strip-components=1
 
 COPY 000-default.conf /etc/apache2/sites-available/default
 COPY config.php /var/www/html
@@ -24,7 +24,7 @@ ENV APACHE_LOG_DIR /var/log/apache2/
 ENV APACHE_PID_FILE /var/apache.pid
 
 # Defaults
-ENV SSL_ENABLED false
+ENV SSL_ENABLED true
 ENV PROXY_ENABLED false
 
 LABEL org.label-schema.build-date="2016-06-20T10:05:01Z" \
